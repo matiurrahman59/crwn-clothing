@@ -1,0 +1,39 @@
+import { createAction } from '../../utils/reducer/reducer.utils';
+import { USER_ACTION_TYPES } from './user-types';
+
+//========check is user already logged in========//
+export const checkUserSession = () =>
+  createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
+
+//========google sign in actions========//
+export const googleSignInStart = () =>
+  createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
+
+//========sign in actions========//
+export const emailSignInStart = (email, password) =>
+  createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password });
+export const signInSuccess = (user) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
+export const signInFailed = (err) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, err);
+
+//========sign up actions========//
+export const signUpStart = (email, password, displayName) =>
+  createAction(USER_ACTION_TYPES.SIGN_UP_START, {
+    email,
+    password,
+    displayName,
+  });
+export const signUpSuccess = (user, additionalDetails) => {
+  createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
+};
+export const signUpFailed = (err) =>
+  createAction(USER_ACTION_TYPES.SIGN_UP_FAILED, err);
+
+//========sign out actions========//
+export const signOutStart = () =>
+  createAction(USER_ACTION_TYPES.SIGN_OUT_START);
+export const signOutSuccess = () =>
+  createAction(USER_ACTION_TYPES.SIGN_OUT_SUCCESS);
+export const signOutFailed = (err) =>
+  createAction(USER_ACTION_TYPES.SIGN_OUT_FAILED, err);
